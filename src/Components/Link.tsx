@@ -20,12 +20,14 @@ function Link({ linkToken }: LinkProps): JSX.Element {
       const data = await response.json();
       console.log(data);
     };
+    exchangePublicTokenForAccessToken();
   }, []);
 
   const { open, ready } = usePlaidLink({
     token: linkToken,
     onSuccess,
   });
+
   return (
     <button onClick={() => open()} disabled={!ready}>
       Connect a bank account
