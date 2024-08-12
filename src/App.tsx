@@ -5,7 +5,6 @@ import "./App.css";
 function App() {
   const [linkToken, setLinkToken] = useState<string>("");
   const generateLinkToken = useCallback(async () => {
-    console.log("Hello World");
     const response = await fetch(
       "http://localhost:3000/api/create_link_token",
       {
@@ -16,7 +15,6 @@ function App() {
       }
     );
 
-    console.log(response);
     if (!response.ok) {
       return;
     }
@@ -25,7 +23,6 @@ function App() {
       setLinkToken(data.link_token);
     }
   }, []);
-  console.log("Before useEffect");
   useEffect(() => {
     const init = () => {
       generateLinkToken();
