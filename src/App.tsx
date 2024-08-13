@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Link from "./Components/Link";
 import "./App.css";
 import DashboardView from "./View/DashboardView";
+import LoginView from "./View/LoginView";
+import SignUpView from "./View/SignUpView";
 
 function App() {
   const [linkToken, setLinkToken] = useState<string>("");
@@ -56,6 +58,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<DashboardView />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route path="/register" element={<SignUpView />} />
         </Routes>
       </BrowserRouter>
       <Link
