@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Link from "./Components/Link";
 import "./App.css";
+import DashboardView from "./View/DashboardView";
 
 function App() {
   const [linkToken, setLinkToken] = useState<string>("");
@@ -51,6 +53,11 @@ function App() {
 
   return (
     <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/home" element={<DashboardView />} />
+        </Routes>
+      </BrowserRouter>
       <Link
         linkToken={linkToken}
         handleReadyAccess={() => {
