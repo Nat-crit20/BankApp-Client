@@ -3,8 +3,9 @@ import { usePlaidLink } from "react-plaid-link";
 
 interface LinkProps {
   linkToken: string;
+  handleReadyAccess: () => void;
 }
-function Link({ linkToken }: LinkProps): JSX.Element {
+function Link({ linkToken, handleReadyAccess }: LinkProps): JSX.Element {
   const onSuccess = useCallback((public_token: string) => {
     const exchangePublicTokenForAccessToken = async () => {
       const response = await fetch(
@@ -23,6 +24,7 @@ function Link({ linkToken }: LinkProps): JSX.Element {
       const data = await response.json();
       if (data) {
         console.log("Success got the access token saved in the backend!");
+        handleReadyAccess();
       }
     };
     exchangePublicTokenForAccessToken();
