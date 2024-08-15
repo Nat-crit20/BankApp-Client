@@ -63,6 +63,9 @@ function App() {
           <Route path="/register" element={<SignUpView />} />
           <Route element={<Layout />}>
             <Route path="/home" element={<DashboardView />} />
+            <Route path="/transactions" element={<DashboardView />} />
+            <Route path="/accounts" element={<DashboardView />} />
+            <Route path="/settings" element={<DashboardView />} />
           </Route>
         </Routes>
       </BrowserRouter>

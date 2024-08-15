@@ -1,5 +1,5 @@
 import { Box, Tabs, Tab } from "@mui/material";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <Box
@@ -16,13 +16,18 @@ const Navbar = () => {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+        <Link to="/home">
+          <Tab label="Dashboard" />
+        </Link>
+        <Link to="/transactions">
+          <Tab label="Transactions" />
+        </Link>
+        <Link to="/accounts">
+          <Tab label="Accounts" />
+        </Link>
+        <Link to="/settings">
+          <Tab label="Settings" />
+        </Link>
       </Tabs>
     </Box>
   );
