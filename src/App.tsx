@@ -7,6 +7,9 @@ import DashboardView from "./View/DashboardView";
 import LoginView from "./View/LoginView";
 import SignUpView from "./View/SignUpView";
 import Layout from "./Components/Layout";
+import AccountsView from "./View/AccountsView";
+import TransactionsView from "./View/Transactions";
+import SettingsView from "./View/SettingsView";
 
 function App() {
   const [linkToken, setLinkToken] = useState<string>("");
@@ -63,9 +66,9 @@ function App() {
           <Route path="/register" element={<SignUpView />} />
           <Route element={<Layout />}>
             <Route path="/home" element={<DashboardView />} />
-            <Route path="/transactions" element={<DashboardView />} />
-            <Route path="/accounts" element={<DashboardView />} />
-            <Route path="/settings" element={<DashboardView />} />
+            <Route path="/transactions" element={<TransactionsView />} />
+            <Route path="/accounts" element={<AccountsView />} />
+            <Route path="/settings" element={<SettingsView />} />
           </Route>
         </Routes>
       </BrowserRouter>
