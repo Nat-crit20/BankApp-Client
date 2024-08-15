@@ -8,12 +8,13 @@ const Navbar = () => {
         bgcolor: "background.paper",
         display: "flex",
         height: "100%",
+        width: "100%",
       }}
     >
       <Tabs
         orientation="vertical"
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider" }}
+        sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
       >
         <Tab label="Item One" />
         <Tab label="Item Two" />
