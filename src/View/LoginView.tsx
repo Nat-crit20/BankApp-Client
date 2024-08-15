@@ -1,10 +1,11 @@
 import FormControl from "@mui/material/FormControl";
 import { TextField, Button } from "@mui/material";
 import BankHead from "../assets/BankingHeadingImg.png";
+import "./LoginView.css";
 
 function LoginView() {
   return (
-    <div>
+    <div className="login-view">
       <div>
         <img src={BankHead} alt="" />
       </div>
