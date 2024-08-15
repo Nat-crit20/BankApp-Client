@@ -7,12 +7,11 @@ const Navbar = () => {
         flexGrow: 1,
         bgcolor: "background.paper",
         display: "flex",
-        height: 224,
+        height: "100%",
       }}
     >
       <Tabs
         orientation="vertical"
-        variant="scrollable"
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: "divider" }}
       >
