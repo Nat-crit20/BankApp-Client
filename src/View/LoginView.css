@@ -12,6 +12,14 @@
 }
 .form-container {
   width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-container > * {
+  margin: 1rem;
 }
 .login-view img {
   height: 100vh;

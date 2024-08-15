@@ -12,10 +12,22 @@ function LoginView() {
       </div>
       <div className="form-container">
         <h1>Log in</h1>
-        <FormControl>
-          <TextField id="standard-basic" label="Username" variant="standard" />
-          <TextField id="standard-basic" label="Password" variant="standard" />
-          <Button variant="contained">Submit</Button>
+        <FormControl sx={{ width: "20rem" }}>
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Username"
+            variant="standard"
+          />
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+          />
+          <Button sx={{ margin: "1rem" }} variant="contained">
+            Submit
+          </Button>
         </FormControl>
         <Link to="/register">Need to Sing Up?</Link>
       </div>
