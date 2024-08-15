@@ -6,15 +6,17 @@ import "./LoginView.css";
 function LoginView() {
   return (
     <div className="login-view">
-      <div>
+      <div className="img-container">
         <img src={BankHead} alt="" />
       </div>
-      <h1>Log in</h1>
-      <FormControl>
-        <TextField id="standard-basic" label="Username" variant="standard" />
-        <TextField id="standard-basic" label="Password" variant="standard" />
-        <Button variant="contained">Submit</Button>
-      </FormControl>
+      <div className="form-container">
+        <h1>Log in</h1>
+        <FormControl>
+          <TextField id="standard-basic" label="Username" variant="standard" />
+          <TextField id="standard-basic" label="Password" variant="standard" />
+          <Button variant="contained">Submit</Button>
+        </FormControl>
+      </div>
     </div>
   );
 }
