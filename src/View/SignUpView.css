@@ -13,6 +13,7 @@
 .form-container {
   width: 50%;
 }
-.login-view img {
+.sign-up-view img {
   height: 100vh;
+  width: auto;
 }
