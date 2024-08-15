@@ -62,12 +62,12 @@ function App() {
           <Route path="/register" element={<SignUpView />} />
         </Routes>
       </BrowserRouter>
-      <Link
+      {/* <Link
         linkToken={linkToken}
         handleReadyAccess={() => {
           setReadyAccess(true);
         }}
-      />
+      /> */}
     </>
   );
 }
