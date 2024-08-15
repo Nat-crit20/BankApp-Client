@@ -1,6 +1,7 @@
 import FormControl from "@mui/material/FormControl";
 import { TextField, Button } from "@mui/material";
 import BankHead from "../assets/BankingHeadingImg.png";
+import { Link } from "react-router-dom";
 import "./SignUpView.css";
 
 function SignUpView() {
@@ -23,6 +24,7 @@ function SignUpView() {
           <TextField id="standard-basic" label="Password" variant="standard" />
           <Button variant="contained">Submit</Button>
         </FormControl>
+        <Link to="/login">Login?</Link>
       </div>
     </div>
   );
