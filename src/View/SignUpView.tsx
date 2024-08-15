@@ -12,17 +12,40 @@ function SignUpView() {
       </div>
       <div className="form-container">
         <h1>Sign up</h1>
-        <FormControl>
+        <FormControl sx={{ width: "20rem" }}>
           <TextField
+            sx={{ margin: "1rem" }}
             id="standard-basic"
             label="First Name"
             variant="standard"
           />
-          <TextField id="standard-basic" label="Last Name" variant="standard" />
-          <TextField id="standard-basic" label="Username" variant="standard" />
-          <TextField id="standard-basic" label="Email" variant="standard" />
-          <TextField id="standard-basic" label="Password" variant="standard" />
-          <Button variant="contained">Submit</Button>
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Last Name"
+            variant="standard"
+          />
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Username"
+            variant="standard"
+          />
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Email"
+            variant="standard"
+          />
+          <TextField
+            sx={{ margin: "1rem" }}
+            id="standard-basic"
+            label="Password"
+            variant="standard"
+          />
+          <Button sx={{ margin: "1rem" }} variant="contained">
+            Submit
+          </Button>
         </FormControl>
         <Link to="/login">Login?</Link>
       </div>
