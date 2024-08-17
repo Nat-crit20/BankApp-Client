@@ -19,7 +19,10 @@ const { Provider } = Context;
 export const QuickStartProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  function QuickStartReducer(state: QuickStartState, action: QuickStartAction) {
+  function QuickStartReducer(
+    state: QuickStartState,
+    action: QuickStartAction
+  ): QuickStartState {
     switch (action.type) {
       case "SET_STATE": {
         return { ...state, ...action.state };

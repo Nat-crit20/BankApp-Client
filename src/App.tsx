@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState, useContext } from "react";
+import Context from "./Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Link from "./Components/Link";
 import Navbar from "./Components/Navbar";
@@ -12,6 +13,8 @@ import TransactionsView from "./View/Transactions";
 import SettingsView from "./View/SettingsView";
 
 function App() {
+  const { linkTokenID, dispatch } = useContext(Context);
+
   const [linkToken, setLinkToken] = useState<string>("");
   const [readyAccess, setReadyAccess] = useState<boolean>(false);
   const generateLinkToken = useCallback(async () => {
