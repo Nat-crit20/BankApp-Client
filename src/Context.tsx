@@ -2,8 +2,8 @@ import { createContext, useReducer } from "react";
 interface QuickStateState {
   linkTokenID: string;
 }
-const initialState = {
-  linkTokenID: null,
+const initialState: QuickStateState = {
+  linkTokenID: "",
 };
 const Context = createContext(initialState);
 const { Provider } = Context;
