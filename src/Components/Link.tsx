@@ -1,11 +1,12 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { usePlaidLink } from "react-plaid-link";
+import Context from "../Context";
 
 interface LinkProps {
-  linkToken: string;
   handleReadyAccess: () => void;
 }
-function Link({ linkToken, handleReadyAccess }: LinkProps): JSX.Element {
+function Link({ handleReadyAccess }: LinkProps): JSX.Element {
+  const { linkTokenID } = useContext(Context);
   const onSuccess = useCallback((public_token: string) => {
     const exchangePublicTokenForAccessToken = async () => {
       const response = await fetch(
@@ -31,7 +32,7 @@ function Link({ linkToken, handleReadyAccess }: LinkProps): JSX.Element {
   }, []);
 
   const { open, ready } = usePlaidLink({
-    token: linkToken,
+    token: linkTokenID,
     onSuccess,
   });
 

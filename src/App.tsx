@@ -12,7 +12,7 @@ import TransactionsView from "./View/Transactions";
 import SettingsView from "./View/SettingsView";
 
 function App() {
-  const { linkTokenID, dispatch } = useContext(Context);
+  const { dispatch } = useContext(Context);
 
   // const [linkToken, setLinkToken] = useState<string>("");
   const [readyAccess, setReadyAccess] = useState<boolean>(false);
@@ -79,7 +79,6 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Link
-        linkToken={linkTokenID}
         handleReadyAccess={() => {
           setReadyAccess(true);
         }}
