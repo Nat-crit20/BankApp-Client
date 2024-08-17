@@ -1,14 +1,16 @@
-import { createContext, useReducer } from "react";
-interface QuickStateState {
+import React, { createContext, useReducer, ReactNode, FC } from "react";
+interface QuickStartState {
   linkTokenID: string;
 }
-const initialState: QuickStateState = {
+const initialState: QuickStartState = {
   linkTokenID: "",
 };
 const Context = createContext(initialState);
 const { Provider } = Context;
 
-export function QuickStartProvider({ children }) {
+export const QuickStartProvider: FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   function QuickStartReducer(state, action) {
     switch (action.type) {
       case "SET_STATE": {
@@ -22,6 +24,6 @@ export function QuickStartProvider({ children }) {
   const [state, dispatch] = useReducer(QuickStartReducer, initialState);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
-}
+};
 
 export default Context;
