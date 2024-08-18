@@ -2,11 +2,8 @@ import { useCallback, useContext } from "react";
 import { usePlaidLink } from "react-plaid-link";
 import Context from "../Context";
 
-interface LinkProps {
-  handleReadyAccess: () => void;
-}
-function Link({ handleReadyAccess }: LinkProps): JSX.Element {
-  const { linkTokenID } = useContext(Context);
+function Link(): JSX.Element {
+  const { linkTokenID, dispatch } = useContext(Context);
   const onSuccess = useCallback(
     (public_token: string) => {
       const exchangePublicTokenForAccessToken = async () => {
@@ -25,13 +22,15 @@ function Link({ handleReadyAccess }: LinkProps): JSX.Element {
         }
         const data = await response.json();
         if (data) {
-          console.log("Success got the access token saved in the backend!");
-          handleReadyAccess();
+          dispatch({
+            type: "SET_STATE",
+            state: { accountAccess: true },
+          });
         }
       };
       exchangePublicTokenForAccessToken();
     },
-    [handleReadyAccess]
+    [dispatch]
   );
 
   const { open, ready } = usePlaidLink({

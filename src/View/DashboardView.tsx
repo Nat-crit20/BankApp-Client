@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Link from "../Components/Link";
 
 function DashboardView() {
   const [readyAccess, setReadyAccess] = useState<boolean>(false);
+
   const getAccount = async () => {
     console.log("before get accounts");
     const response = await fetch("http://localhost:3000/api/accounts", {
@@ -23,11 +24,7 @@ function DashboardView() {
 
   return (
     <>
-      <Link
-        handleReadyAccess={() => {
-          setReadyAccess(true);
-        }}
-      />
+      <Link />
       <h1>Dashboard</h1>
     </>
   );
