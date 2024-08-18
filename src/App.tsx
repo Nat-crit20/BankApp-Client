@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState, useContext } from "react";
+import { useCallback, useEffect, useContext } from "react";
 import Context from "./Context";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Link from "./Components/Link";
+
 import "./App.css";
 import DashboardView from "./View/DashboardView";
 import LoginView from "./View/LoginView";
