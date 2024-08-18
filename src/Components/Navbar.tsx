@@ -7,14 +7,13 @@ const Navbar = () => {
         flexGrow: 1,
         bgcolor: "background.paper",
         display: "flex",
-        height: "100%",
-        width: "100%",
+        height: "100vh",
       }}
     >
       <Tabs
         orientation="vertical"
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider", width: "100%" }}
+        sx={{ borderRight: 1, borderColor: "divider", width: "10rem" }}
       >
         <Link to="/home">
           <Tab label="Dashboard" />

@@ -1,8 +1,9 @@
 .layout {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: auto;
 }
-.layout:nth-child(1) {
-  width: 30vw;
-  height: 100vh;
+.layout-child {
+  width: 100%;
 }
