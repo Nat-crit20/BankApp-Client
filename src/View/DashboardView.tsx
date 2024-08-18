@@ -1,8 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import Link from "../Components/Link";
+import Context from "../Context";
 
 function DashboardView() {
-  const [readyAccess, setReadyAccess] = useState<boolean>(false);
+  const { accountAccess } = useContext(Context);
 
   const getAccount = async () => {
     console.log("before get accounts");
@@ -16,7 +17,7 @@ function DashboardView() {
     console.log(data);
   };
   useEffect(() => {
-    if (readyAccess) {
+    if (accountAccess) {
       console.log("Get Account");
       getAccount();
     }
