@@ -1,6 +1,7 @@
 import { createContext, useReducer, ReactNode, Dispatch, FC } from "react";
 interface QuickStartState {
   linkTokenID: string;
+  accountAccess: boolean;
 }
 type QuickStartAction = {
   type: "SET_STATE";
@@ -11,6 +12,7 @@ interface QuickStartContext extends QuickStartState {
 }
 const initialState: QuickStartState = {
   linkTokenID: "",
+  accountAccess: false,
 };
 
 const Context = createContext(initialState as QuickStartContext);

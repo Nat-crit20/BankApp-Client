@@ -34,7 +34,6 @@ function App() {
         type: "SET_STATE",
         state: { linkTokenID: data.link_token },
       });
-      // setLinkToken(data.link_token);
     }
   }, [dispatch]);
 

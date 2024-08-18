@@ -20,6 +20,7 @@ function DashboardView() {
       getAccount();
     }
   }, [readyAccess]);
+
   return (
     <>
       <Link
