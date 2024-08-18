@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import Link from "../Components/Link";
 import Context from "../Context";
 
@@ -21,7 +21,7 @@ function DashboardView() {
       console.log("Get Account");
       getAccount();
     }
-  }, [readyAccess]);
+  }, [accountAccess]);
 
   return (
     <>
