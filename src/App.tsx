@@ -14,8 +14,6 @@ import SettingsView from "./View/SettingsView";
 function App() {
   const { dispatch } = useContext(Context);
 
-  // const [linkToken, setLinkToken] = useState<string>("");
-  const [readyAccess, setReadyAccess] = useState<boolean>(false);
   const generateLinkToken = useCallback(async () => {
     const response = await fetch(
       "http://localhost:3000/api/create_link_token",
@@ -40,29 +38,12 @@ function App() {
     }
   }, [dispatch]);
 
-  const getAccount = async () => {
-    console.log("before get accounts");
-    const response = await fetch("http://localhost:3000/api/accounts", {
-      method: "GET",
-    });
-    if (!response.ok) {
-      return;
-    }
-    const data = await response.json();
-    console.log(data);
-  };
   useEffect(() => {
     const init = () => {
       generateLinkToken();
     };
     init();
   }, [generateLinkToken]);
-  useEffect(() => {
-    if (readyAccess) {
-      console.log("Get Account");
-      getAccount();
-    }
-  }, [readyAccess]);
 
   return (
     <>
@@ -78,11 +59,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      <Link
-        handleReadyAccess={() => {
-          setReadyAccess(true);
-        }}
-      />
     </>
   );
 }
