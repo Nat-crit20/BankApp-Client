@@ -9,9 +9,13 @@ import Typography from "@mui/material/Typography";
 import Link from "../Components/Link";
 import Context from "../Context";
 
+interface Account {
+  name: string;
+}
+
 function DashboardView() {
   const { accountAccess } = useContext(Context);
-  const [accounts, setAccounts] = useState([]);
+  const [accounts, setAccounts] = useState<Account[]>([]);
 
   const getAccount = async () => {
     const response = await fetch("http://localhost:3000/api/accounts", {
