@@ -32,10 +32,28 @@ function DashboardView() {
   }, [accountAccess]);
 
   return (
-    <>
+    <Box>
       <Link />
-      <h1>Dashboard</h1>
-    </>
+      {accounts ? (
+        accounts.map((account) => {
+          return (
+            <Card>
+              <CardContent>
+                <Typography
+                  sx={{ fontSize: 14 }}
+                  color="text.secondary"
+                  gutterBottom
+                >
+                  {account.name}
+                </Typography>
+              </CardContent>
+            </Card>
+          );
+        })
+      ) : (
+        <></>
+      )}
+    </Box>
   );
 }
 export default DashboardView;
