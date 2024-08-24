@@ -2,7 +2,6 @@ import { useEffect, useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Stack } from "@mui/material";
 import Link from "../Components/Link";
@@ -20,6 +19,7 @@ interface Account {
 function DashboardView() {
   const { accountAccess } = useContext(Context);
   const [accounts, setAccounts] = useState<Account[]>([]);
+  const [totalBalance, setTotalBalance] = useState<number>(0);
 
   const getAccount = async () => {
     const response = await fetch("http://localhost:3000/api/accounts", {
@@ -31,6 +31,11 @@ function DashboardView() {
     const data = await response.json();
     console.log(data);
     setAccounts(data.accounts);
+    data.accounts.map((account: Account) => {
+      setTotalBalance((current) => {
+        return current + account.balances.current;
+      });
+    });
   };
   useEffect(() => {
     if (accountAccess) {
@@ -43,6 +48,32 @@ function DashboardView() {
     <Box>
       <Link />
       <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
+        <Card
+          sx={{
+            bgcolor: "background.paper",
+            boxShadow: 1,
+            borderRadius: 2,
+            p: 2,
+            width: 300,
+          }}
+        >
+          <CardContent>
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              Balance
+            </Typography>
+            <Typography
+              sx={{ fontSize: 14 }}
+              color="text.secondary"
+              gutterBottom
+            >
+              ${totalBalance}
+            </Typography>
+          </CardContent>
+        </Card>
         {accounts ? (
           accounts.map((account) => {
             return (
