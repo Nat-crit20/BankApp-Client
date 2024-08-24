@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import { Stack } from "@mui/material";
 import Link from "../Components/Link";
 import Context from "../Context";
 
@@ -42,33 +42,43 @@ function DashboardView() {
   return (
     <Box>
       <Link />
-      {accounts ? (
-        accounts.map((account) => {
-          return (
-            <Card>
-              <CardContent>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  {account.name}
-                </Typography>
-                <Typography
-                  sx={{ fontSize: 14 }}
-                  color="text.secondary"
-                  gutterBottom
-                >
-                  {account.balances.iso_currency_code === "USD" ? "$" : "CA$"}
-                  {account.balances.current}
-                </Typography>
-              </CardContent>
-            </Card>
-          );
-        })
-      ) : (
-        <></>
-      )}
+      <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
+        {accounts ? (
+          accounts.map((account) => {
+            return (
+              <Card
+                sx={{
+                  bgcolor: "background.paper",
+                  boxShadow: 1,
+                  borderRadius: 2,
+                  p: 2,
+                  width: 300,
+                }}
+              >
+                <CardContent>
+                  <Typography
+                    sx={{ fontSize: 14 }}
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    {account.name}
+                  </Typography>
+                  <Typography
+                    sx={{ fontSize: 14 }}
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    {account.balances.iso_currency_code === "USD" ? "$" : "CA$"}
+                    {account.balances.current}
+                  </Typography>
+                </CardContent>
+              </Card>
+            );
+          })
+        ) : (
+          <></>
+        )}
+      </Stack>
     </Box>
   );
 }
