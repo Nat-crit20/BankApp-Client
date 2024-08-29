@@ -1,5 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import Context from "../Context";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { Stack } from "@mui/material";
 
 interface Transaction {
   amount: number;
@@ -8,6 +13,7 @@ interface Transaction {
   date: Date;
   iso_currency_code: string;
   merchant_name: string;
+  name: string;
   payment_channel: string;
   pending: boolean;
   personal_finance_category: {
@@ -42,7 +48,12 @@ const TransactionsView = () => {
     <>
       <h1>Transactions</h1>
       {transactions.map((transaction) => {
-        return <div>{transaction.amount}</div>;
+        return (
+          <div>
+            {transaction.name}
+            {transaction.amount}
+          </div>
+        );
       })}
     </>
   );
