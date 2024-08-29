@@ -1,24 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import Context from "../Context";
-
-interface Transaction {
-  amount: number;
-  authorized_date: Date;
-  category: string[];
-  date: Date;
-  iso_currency_code: string;
-  merchant_name: string;
-  name: string;
-  payment_channel: string;
-  pending: boolean;
-  personal_finance_category: {
-    confidence_level: string;
-    detailed: string;
-    primary: string;
-  };
-  transaction_id: string;
-  website: string;
-}
+import TransactionCard from "../Components/TransactionCard";
+import { Transaction } from "../lib/types";
 
 const TransactionsView = () => {
   const { accountAccess } = useContext(Context);
@@ -45,8 +28,7 @@ const TransactionsView = () => {
       {transactions.map((transaction) => {
         return (
           <div>
-            {transaction.name}
-            {transaction.amount}
+            <TransactionCard {...transaction} />
           </div>
         );
       })}
