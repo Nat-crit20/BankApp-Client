@@ -1,9 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import Context from "../Context";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 
 interface Transaction {
   amount: number;
