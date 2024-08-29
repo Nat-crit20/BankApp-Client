@@ -41,6 +41,9 @@ const TransactionsView = () => {
   return (
     <>
       <h1>Transactions</h1>
+      {transactions.map((transaction) => {
+        return <div>{transaction.amount}</div>;
+      })}
     </>
   );
 };
