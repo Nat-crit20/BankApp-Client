@@ -22,6 +22,7 @@ interface Transaction {
 
 const TransactionsView = () => {
   const { accountAccess } = useContext(Context);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   const getTransactions = async () => {
     const response = await fetch("http://localhost:3000/api/transactions", {
@@ -31,7 +32,7 @@ const TransactionsView = () => {
       return;
     }
     const data = await response.json();
-    console.log(data);
+    setTransactions(data.latest_transactions);
   };
   useEffect(() => {
     if (accountAccess) {
