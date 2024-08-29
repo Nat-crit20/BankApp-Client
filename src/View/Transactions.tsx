@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import Context from "../Context";
 
 interface Transaction {
-  account_id: string;
   amount: number;
   authorized_date: Date;
   category: string[];
