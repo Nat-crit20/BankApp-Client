@@ -7,9 +7,16 @@ import { Transaction } from "../lib/types";
 
 const TransactionCard: React.FC<Transaction> = (transaction) => {
   return (
-    <>
-      <h1>{transaction.name}</h1>
-    </>
+    <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
+          {transaction.name}
+        </Typography>
+        <Typography variant="h5" component="div">
+          {transaction.amount}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 export default TransactionCard;
