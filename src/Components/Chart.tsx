@@ -107,10 +107,15 @@ const Chart = () => {
       dataset={dataset}
       xAxis={[{ scaleType: "band", dataKey: "month" }]}
       series={[
-        { dataKey: "london", label: "London", valueFormatter },
-        { dataKey: "paris", label: "Paris", valueFormatter },
-        { dataKey: "newYork", label: "New York", valueFormatter },
-        { dataKey: "seoul", label: "Seoul", valueFormatter },
+        { dataKey: "london", label: "London", valueFormatter, stack: "assets" },
+        { dataKey: "paris", label: "Paris", valueFormatter, stack: "assets" },
+        {
+          dataKey: "newYork",
+          label: "New York",
+          valueFormatter,
+          stack: "assets",
+        },
+        { dataKey: "seoul", label: "Seoul", valueFormatter, stack: "assets" },
       ]}
       {...chartSetting}
     />
