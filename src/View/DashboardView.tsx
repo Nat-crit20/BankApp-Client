@@ -122,7 +122,7 @@ function DashboardView() {
           <></>
         )}
       </Stack>
-      <Chart />
+      <Chart transactions={transactions} />
     </Box>
   );
 }

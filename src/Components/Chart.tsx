@@ -1,5 +1,7 @@
 import { BarChart } from "@mui/x-charts";
 import { axisClasses } from "@mui/x-charts/ChartsAxis";
+import { Transaction } from "../lib/types";
+import { useEffect, useState } from "react";
 const dataset = [
   {
     london: 59,
@@ -100,23 +102,36 @@ const chartSetting = {
     },
   },
 };
+
 const valueFormatter = (value: number | null) => `${value}mm`;
-const Chart = () => {
+interface ChartProps {
+  transactions: Transaction[];
+}
+type Dataset = Record<string, number>;
+const Chart: React.FC<ChartProps> = ({ transactions }) => {
+  const [spendingByMonth, setSpendingByMonth] = useState({});
+
+  useEffect(() => {
+    if (transactions) {
+      const aggregatedData = transactions.reduce((acc, transaction) => {
+        const date = new Date(transaction.date);
+        const monthNumber = date.getMonth() + 1;
+        const year = date.getFullYear();
+        const key = `${year}-M${monthNumber}`;
+        if (!acc[key]) acc[key] = 0;
+        acc[key] += transaction.amount;
+
+        return acc;
+      }, {} as Dataset);
+
+      setSpendingByMonth(aggregatedData);
+    }
+  }, [transactions]);
   return (
     <BarChart
-      dataset={dataset}
+      dataset={spendingByMonth}
       xAxis={[{ scaleType: "band", dataKey: "month" }]}
-      series={[
-        { dataKey: "london", label: "London", valueFormatter, stack: "assets" },
-        { dataKey: "paris", label: "Paris", valueFormatter, stack: "assets" },
-        {
-          dataKey: "newYork",
-          label: "New York",
-          valueFormatter,
-          stack: "assets",
-        },
-        { dataKey: "seoul", label: "Seoul", valueFormatter, stack: "assets" },
-      ]}
+      series={}
       {...chartSetting}
     />
   );
