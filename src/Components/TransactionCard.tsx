@@ -1,4 +1,3 @@
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -9,6 +8,8 @@ const TransactionCard: React.FC<Transaction> = (transaction) => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
+        <img src={transaction.logo_url} alt="" />
+
         <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
           {transaction.name}
         </Typography>

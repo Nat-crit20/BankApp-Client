@@ -4,6 +4,7 @@ export interface Transaction {
   category: string[];
   date: Date;
   iso_currency_code: string;
+  logo_url: string;
   merchant_name: string;
   name: string;
   payment_channel: string;
