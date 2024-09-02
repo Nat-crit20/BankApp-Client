@@ -8,6 +8,8 @@ import { Stack } from "@mui/material";
 
 import Link from "../Components/Link";
 import Context from "../Context";
+import { getTransactions } from "../lib/utilities";
+import { Transaction } from "../lib/types";
 
 interface Account {
   name: string;
@@ -21,6 +23,7 @@ interface Account {
 function DashboardView() {
   const { accountAccess } = useContext(Context);
   const [accounts, setAccounts] = useState<Account[]>([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [totalBalance, setTotalBalance] = useState<number>(0);
 
   const getAccount = async () => {
@@ -43,6 +46,13 @@ function DashboardView() {
     if (accountAccess) {
       console.log("Get Account");
       getAccount();
+      const loadTransactions = async () => {
+        const data: Transaction[] = await getTransactions();
+        setTransactions(data);
+      };
+
+      // Call the function to load transactions
+      loadTransactions();
     }
   }, [accountAccess]);
 
