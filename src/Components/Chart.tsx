@@ -23,8 +23,8 @@ interface ChartProps {
 }
 type Dataset = Record<string, number>;
 const Chart: React.FC<ChartProps> = ({ transactions }) => {
-  const [spendingByMonth, setSpendingByMonth] = useState<Dataset>({});
-
+  //   const [spendingByMonth, setSpendingByMonth] = useState<Dataset>({});
+  const [spendingByWeek, setSpendingByWeek] = useState<Dataset>({});
   useEffect(() => {
     if (transactions) {
       const aggregatedData = transactions.reduce((acc, transaction) => {
@@ -38,7 +38,7 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
         return acc;
       }, {} as Dataset);
 
-      setSpendingByMonth(aggregatedData);
+      setSpendingByWeek(aggregatedData);
     }
   }, [transactions]);
 
@@ -61,13 +61,13 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
   };
   return (
     <BarChart
-      dataset={Object.keys(spendingByMonth).map((key) => {
+      dataset={Object.keys(spendingByWeek).map((key) => {
         return {
-          week: key, // This will be something like "2024-M9"
-          value: spendingByMonth[key], // This is the total spending for that month
+          week: key, // This will be something like "2024-W9"
+          value: spendingByWeek[key], // This is the total spending for that week
         };
       })}
-      xAxis={[{ scaleType: "band", dataKey: "month" }]} // x-axis represents months
+      xAxis={[{ scaleType: "band", dataKey: "week" }]} // x-axis represents weeks
       series={[
         { dataKey: "value", label: "Total Spending", stack: "spending" },
       ]}
