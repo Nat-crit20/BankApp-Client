@@ -29,9 +29,9 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
     if (transactions) {
       const aggregatedData = transactions.reduce((acc, transaction) => {
         const date = new Date(transaction.date);
-        const monthNumber = date.getMonth() + 1;
+        const weekNumber = getWeekNumber(date);
         const year = date.getFullYear();
-        const key = `${year}-M${monthNumber}`;
+        const key = `${year}-W${weekNumber}`;
         if (!acc[key]) acc[key] = 0;
         acc[key] += transaction.amount;
 
@@ -41,11 +41,29 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
       setSpendingByMonth(aggregatedData);
     }
   }, [transactions]);
+
+  const getWeekNumber = (date: Date): number => {
+    // Copy the date to avoid modifying the original date
+    const tempDate = new Date(date.getTime());
+
+    // Set the date to the nearest Thursday (ISO week date standard)
+    tempDate.setDate(tempDate.getDate() + 3 - ((tempDate.getDay() + 6) % 7));
+
+    // Get the first Thursday of the year
+    const firstThursday = new Date(tempDate.getFullYear(), 0, 4);
+
+    // Calculate the week number
+    const weekNumber = Math.ceil(
+      ((tempDate.getTime() - firstThursday.getTime()) / 86400000 + 1) / 7
+    );
+
+    return weekNumber;
+  };
   return (
     <BarChart
       dataset={Object.keys(spendingByMonth).map((key) => {
         return {
-          month: key, // This will be something like "2024-M9"
+          week: key, // This will be something like "2024-M9"
           value: spendingByMonth[key], // This is the total spending for that month
         };
       })}
