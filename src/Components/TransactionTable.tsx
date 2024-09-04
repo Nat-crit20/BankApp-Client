@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,6 +5,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import React, { useEffect, useState } from "react";
+import { Transaction } from "../lib/types";
 
 function createData(
   name: string,
@@ -16,8 +17,38 @@ function createData(
 ) {
   return { name, transactionID, date, status, amount };
 }
+interface rowData {
+  name: string;
+  transactionID: string;
+  date: Date;
+  status: number;
+  amount: number;
+}
+interface TableProps {
+  transactions: Transaction[];
+}
 
-const TransactionTable = () => {
+const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
+  const [rows, setRow] = useState<rowData[]>([]);
+  useEffect(() => {
+    if (transactions) {
+      for (let i = 0; i < transactions.length; i++) {
+        setRow((prev) => {
+          return [
+            ...prev,
+            {
+              name: transactions[i].name,
+              transactionID: transactions[i].transaction_id,
+              date: transactions[i].authorized_date,
+              status: transactions[i].pending,
+              amount: transactions[i].amount,
+            },
+          ];
+        });
+      }
+    }
+  });
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">

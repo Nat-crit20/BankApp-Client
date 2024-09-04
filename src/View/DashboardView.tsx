@@ -124,7 +124,7 @@ function DashboardView() {
         )}
       </Stack>
       <Chart transactions={transactions} />
-      <TransactionTable />
+      <TransactionTable transactions={transactions} />
     </Box>
   );
 }
