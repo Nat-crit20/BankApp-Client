@@ -11,7 +11,7 @@ import { Transaction } from "../lib/types";
 function createData(
   name: string,
   transactionID: string,
-  date: Date,
+  date: string,
   status: number,
   amount: number
 ) {
@@ -37,13 +37,13 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
         setRow((prev) => {
           return [
             ...prev,
-            {
-              name: transactions[i].name,
-              transactionID: transactions[i].transaction_id,
-              date: transactions[i].authorized_date,
-              status: transactions[i].pending,
-              amount: transactions[i].amount,
-            },
+            createData(
+              transactions[i].name,
+              transactions[i].transaction_id,
+              transactions[i].authorized_date.toISOString(),
+              transactions[i].pending ? 1 : 0, // Convert boolean to number
+              transactions[i].amount
+            ),
           ];
         });
       }
