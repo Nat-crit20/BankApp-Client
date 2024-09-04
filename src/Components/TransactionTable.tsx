@@ -20,7 +20,7 @@ function createData(
 interface rowData {
   name: string;
   transactionID: string;
-  date: Date;
+  date: string;
   status: number;
   amount: number;
 }
@@ -30,6 +30,7 @@ interface TableProps {
 
 const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
   const [rows, setRow] = useState<rowData[]>([]);
+
   useEffect(() => {
     if (transactions) {
       for (let i = 0; i < transactions.length; i++) {
@@ -47,7 +48,7 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
         });
       }
     }
-  });
+  }, [transactions]);
 
   return (
     <TableContainer component={Paper}>
@@ -70,10 +71,10 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{row.transactionID}</TableCell>
+              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="right">{row.status}</TableCell>
+              <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
           ))}
         </TableBody>
