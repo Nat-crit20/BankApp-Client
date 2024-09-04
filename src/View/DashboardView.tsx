@@ -10,6 +10,7 @@ import Link from "../Components/Link";
 import Context from "../Context";
 import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
+import TransactionTable from "../Components/TransactionTable";
 
 interface Account {
   name: string;
@@ -123,6 +124,7 @@ function DashboardView() {
         )}
       </Stack>
       <Chart transactions={transactions} />
+      <TransactionTable />
     </Box>
   );
 }
