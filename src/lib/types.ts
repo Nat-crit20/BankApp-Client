@@ -2,7 +2,7 @@ export interface Transaction {
   amount: number;
   authorized_date: Date;
   category: string[];
-  date: Date;
+  date: string;
   iso_currency_code: string;
   logo_url: string;
   merchant_name: string;

@@ -33,6 +33,7 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
 
   useEffect(() => {
     if (transactions) {
+      setRow([]);
       for (let i = 0; i < transactions.length; i++) {
         setRow((prev) => {
           return [
@@ -40,7 +41,7 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
             createData(
               transactions[i].name,
               transactions[i].transaction_id,
-              transactions[i].authorized_date.toISOString(),
+              transactions[i].date,
               transactions[i].pending ? 1 : 0, // Convert boolean to number
               transactions[i].amount
             ),
