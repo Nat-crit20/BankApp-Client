@@ -36,6 +36,7 @@ function DashboardView() {
     const data = await response.json();
     console.log(data);
     setAccounts(data.accounts);
+    setTotalBalance(0);
     data.accounts.map((account: Account) => {
       setTotalBalance((current) => {
         return current + account.balances.current;
