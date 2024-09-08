@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import Chart from "../Components/Chart";
 import { Container, Stack } from "@mui/material";
 
-import Link from "../Components/Link";
 import Context from "../Context";
 import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
@@ -59,7 +58,7 @@ function DashboardView() {
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-      <Link />
+  
       <Container maxWidth="sm">
         <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
           <Card
@@ -80,7 +79,7 @@ function DashboardView() {
                 Balance
               </Typography>
               <Typography
-                sx={{ fontSize: 14 }}
+                sx={{ fontSize: 25 }}
                 color="text.secondary"
                 gutterBottom
               >
@@ -109,7 +108,7 @@ function DashboardView() {
                       {account.name}
                     </Typography>
                     <Typography
-                      sx={{ fontSize: 14 }}
+                      sx={{ fontSize: 25 }}
                       color="text.secondary"
                       gutterBottom
                     >
