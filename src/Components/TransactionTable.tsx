@@ -38,6 +38,9 @@ const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
       console.log("Type of", typeof transactions);
       setRow([]);
       for (let i = 0; i <= limit; i++) {
+        if (transactions[i] === undefined) {
+          return;
+        }
         setRow((prev) => {
           console.log(transactions[i]);
           return [
