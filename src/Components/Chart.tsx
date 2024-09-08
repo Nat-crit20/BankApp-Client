@@ -21,7 +21,7 @@ const chartSetting = {
 interface ChartProps {
   transactions: Transaction[];
 }
-type Dataset = Record<string, number>;
+type Dataset = Record<string, { expense: number; income: number }>;
 const Chart: React.FC<ChartProps> = ({ transactions }) => {
   //   const [spendingByMonth, setSpendingByMonth] = useState<Dataset>({});
   const [spendingByWeek, setSpendingByWeek] = useState<Dataset>({});
@@ -32,8 +32,30 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
         const weekNumber = getWeekNumber(date);
         const year = date.getFullYear();
         const key = `${year}-W${weekNumber}`;
-        if (!acc[key]) acc[key] = 0;
-        acc[key] += transaction.amount;
+        // Skip if the transaction belongs to "INCOME"
+        console.log("Log transaction", transaction.category);
+        if (
+          transaction.category &&
+          transaction.category.includes &&
+          transaction.category.includes("Income")
+        ) {
+          if (!acc[key])
+            acc[key] = {
+              expense: 0,
+              income: 0,
+            };
+
+          acc[key].income += transaction.amount; // Add income amount
+          return acc;
+        }
+
+        if (!acc[key])
+          acc[key] = {
+            expense: 0,
+            income: 0,
+          };
+
+        acc[key].expense += transaction.amount; // Add expense amount
 
         return acc;
       }, {} as Dataset);
@@ -64,12 +86,14 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
       dataset={Object.keys(spendingByWeek).map((key) => {
         return {
           week: key, // This will be something like "2024-W9"
-          value: spendingByWeek[key], // This is the total spending for that week
+          income: Math.abs(spendingByWeek[key]["income"]), // This is the total spending for that week
+          expense: Math.abs(spendingByWeek[key]["expense"]), // This is the total spending for that week
         };
       })}
       xAxis={[{ scaleType: "band", dataKey: "week" }]} // x-axis represents weeks
       series={[
-        { dataKey: "value", label: "Total Spending", stack: "spending" },
+        { dataKey: "expense", label: "Expense" },
+        { dataKey: "income", label: "Income" },
       ]}
       {...chartSetting}
     />
