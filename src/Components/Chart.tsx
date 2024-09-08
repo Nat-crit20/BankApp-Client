@@ -30,7 +30,12 @@ const Chart: React.FC<ChartProps> = ({ transactions }) => {
       const aggregatedData = transactions.reduce((acc, transaction) => {
         const date = new Date(transaction.date);
         const weekNumber = getWeekNumber(date);
+        const currentDate = new Date();
         const year = date.getFullYear();
+        if (year !== currentDate.getFullYear()) {
+          return acc;
+        }
+
         const key = `${year}-W${weekNumber}`;
         // Skip if the transaction belongs to "INCOME"
         console.log("Log transaction", transaction.category);
