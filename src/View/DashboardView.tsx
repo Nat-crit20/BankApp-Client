@@ -59,7 +59,7 @@ function DashboardView() {
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
           <Card
             sx={{
@@ -67,7 +67,8 @@ function DashboardView() {
               boxShadow: 1,
               borderRadius: 2,
               p: 2,
-              width: 300,
+              width: 200,
+              height: 100,
             }}
           >
             <CardContent>
@@ -96,7 +97,8 @@ function DashboardView() {
                     boxShadow: 1,
                     borderRadius: 2,
                     p: 2,
-                    width: 300,
+                    width: 200,
+                    height: 100,
                   }}
                 >
                   <CardContent>
@@ -128,7 +130,7 @@ function DashboardView() {
         <Chart transactions={transactions} />
       </Container>
 
-      <TransactionTable transactions={transactions} limit={4} />
+      <TransactionTable transactions={transactions} limit={10} />
     </Box>
   );
 }
