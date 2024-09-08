@@ -26,16 +26,20 @@ interface rowData {
 }
 interface TableProps {
   transactions: Transaction[];
+  limit: number;
 }
 
-const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
+const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
   const [rows, setRow] = useState<rowData[]>([]);
 
   useEffect(() => {
-    if (transactions) {
+    if (transactions.length > 0) {
+      console.log(transactions);
+      console.log("Type of", typeof transactions);
       setRow([]);
-      for (let i = 0; i < transactions.length; i++) {
+      for (let i = 0; i <= limit; i++) {
         setRow((prev) => {
+          console.log(transactions[i]);
           return [
             ...prev,
             createData(

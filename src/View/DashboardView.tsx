@@ -129,7 +129,7 @@ function DashboardView() {
         <Chart transactions={transactions} />
       </Container>
 
-      <TransactionTable transactions={transactions} />
+      <TransactionTable transactions={transactions} limit={4} />
     </Box>
   );
 }
