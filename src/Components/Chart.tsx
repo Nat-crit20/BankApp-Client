@@ -4,11 +4,6 @@ import { Transaction } from "../lib/types";
 import { useEffect, useState } from "react";
 
 const chartSetting = {
-  yAxis: [
-    {
-      label: "rainfall (mm)",
-    },
-  ],
   width: 500,
   height: 300,
   sx: {
