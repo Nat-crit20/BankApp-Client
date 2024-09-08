@@ -53,7 +53,7 @@ const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
         });
       }
     }
-  }, [transactions]);
+  }, [transactions, limit]);
 
   return (
     <TableContainer component={Paper}>
