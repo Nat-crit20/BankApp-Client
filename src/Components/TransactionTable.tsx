@@ -53,13 +53,11 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 150 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">TransactionID</TableCell>
-            <TableCell align="right">Date</TableCell>
-            <TableCell align="right">Status</TableCell>
+
             <TableCell align="right">Amount</TableCell>
           </TableRow>
         </TableHead>
@@ -72,9 +70,7 @@ const TransactionTable: React.FC<TableProps> = ({ transactions }) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{row.transactionID}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
-              <TableCell align="right">{row.status}</TableCell>
+
               <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
           ))}

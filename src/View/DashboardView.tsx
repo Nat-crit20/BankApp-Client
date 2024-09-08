@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Chart from "../Components/Chart";
-import { Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 
 import Link from "../Components/Link";
 import Context from "../Context";
@@ -58,72 +58,77 @@ function DashboardView() {
   }, [accountAccess]);
 
   return (
-    <Box>
+    <Box sx={{ display: "flex", height: "100%" }}>
       <Link />
-      <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
-        <Card
-          sx={{
-            bgcolor: "background.paper",
-            boxShadow: 1,
-            borderRadius: 2,
-            p: 2,
-            width: 300,
-          }}
-        >
-          <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Balance
-            </Typography>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              ${totalBalance}
-            </Typography>
-          </CardContent>
-        </Card>
-        {accounts ? (
-          accounts.map((account) => {
-            return (
-              <Card
-                sx={{
-                  bgcolor: "background.paper",
-                  boxShadow: 1,
-                  borderRadius: 2,
-                  p: 2,
-                  width: 300,
-                }}
+      <Container maxWidth="sm">
+        <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
+          <Card
+            sx={{
+              bgcolor: "background.paper",
+              boxShadow: 1,
+              borderRadius: 2,
+              p: 2,
+              width: 300,
+            }}
+          >
+            <CardContent>
+              <Typography
+                sx={{ fontSize: 14 }}
+                color="text.secondary"
+                gutterBottom
               >
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {account.name}
-                  </Typography>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {account.balances.iso_currency_code === "USD" ? "$" : "CA$"}
-                    {account.balances.current}
-                  </Typography>
-                </CardContent>
-              </Card>
-            );
-          })
-        ) : (
-          <></>
-        )}
-      </Stack>
-      <Chart transactions={transactions} />
+                Balance
+              </Typography>
+              <Typography
+                sx={{ fontSize: 14 }}
+                color="text.secondary"
+                gutterBottom
+              >
+                ${totalBalance}
+              </Typography>
+            </CardContent>
+          </Card>
+          {accounts ? (
+            accounts.map((account) => {
+              return (
+                <Card
+                  sx={{
+                    bgcolor: "background.paper",
+                    boxShadow: 1,
+                    borderRadius: 2,
+                    p: 2,
+                    width: 300,
+                  }}
+                >
+                  <CardContent>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {account.name}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: 14 }}
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {account.balances.iso_currency_code === "USD"
+                        ? "$"
+                        : "CA$"}
+                      {account.balances.current}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              );
+            })
+          ) : (
+            <></>
+          )}
+        </Stack>
+        <Chart transactions={transactions} />
+      </Container>
+
       <TransactionTable transactions={transactions} />
     </Box>
   );
