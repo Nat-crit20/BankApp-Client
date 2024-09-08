@@ -58,12 +58,11 @@ function DashboardView() {
 
   return (
     <Box sx={{ display: "flex", height: "100%" }}>
-  
       <Container maxWidth="sm">
         <Stack direction="row" spacing={2} sx={{ margin: 2 }}>
           <Card
             sx={{
-              bgcolor: "background.paper",
+              bgcolor: "#ebf3f9",
               boxShadow: 1,
               borderRadius: 2,
               p: 2,
@@ -92,7 +91,7 @@ function DashboardView() {
               return (
                 <Card
                   sx={{
-                    bgcolor: "background.paper",
+                    bgcolor: "#ebf3f9",
                     boxShadow: 1,
                     borderRadius: 2,
                     p: 2,
