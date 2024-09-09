@@ -13,9 +13,10 @@ function createData(
   transactionID: string,
   date: string,
   status: number,
-  amount: number
+  amount: number,
+  logo_url: string
 ) {
-  return { name, transactionID, date, status, amount };
+  return { name, transactionID, date, status, amount, logo_url };
 }
 interface rowData {
   name: string;
@@ -23,6 +24,7 @@ interface rowData {
   date: string;
   status: number;
   amount: number;
+  logo_url: string;
 }
 interface TableProps {
   transactions: Transaction[];
@@ -53,7 +55,8 @@ const TransactionTable: React.FC<TableProps> = ({
               transactions[i].transaction_id,
               transactions[i].date,
               transactions[i].pending ? 1 : 0, // Convert boolean to number
-              transactions[i].amount
+              transactions[i].amount,
+              transactions[i].logo_url
             ),
           ];
         });
@@ -86,6 +89,7 @@ const TransactionTable: React.FC<TableProps> = ({
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
+                {dashboard ? <img src={row.logo_url} /> : <></>}
                 {row.name}
               </TableCell>
               {dashboard ? (

@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import Context from "../Context";
-import TransactionCard from "../Components/TransactionCard";
+
 import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
+import TransactionTable from "../Components/TransactionTable";
 
 const TransactionsView = () => {
   const { accountAccess } = useContext(Context);
@@ -22,13 +23,12 @@ const TransactionsView = () => {
   return (
     <>
       <h1>Transactions</h1>
-      {transactions.map((transaction) => {
-        return (
-          <div>
-            <TransactionCard {...transaction} />
-          </div>
-        );
-      })}
+
+      <TransactionTable
+        transactions={transactions}
+        limit={10}
+        dashboard={true}
+      />
     </>
   );
 };
