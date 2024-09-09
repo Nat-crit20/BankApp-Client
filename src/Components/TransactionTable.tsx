@@ -27,15 +27,18 @@ interface rowData {
 interface TableProps {
   transactions: Transaction[];
   limit: number;
+  dashboard: boolean;
 }
 
-const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
+const TransactionTable: React.FC<TableProps> = ({
+  transactions,
+  limit,
+  dashboard,
+}) => {
   const [rows, setRow] = useState<rowData[]>([]);
 
   useEffect(() => {
     if (transactions.length > 0) {
-      console.log(transactions);
-      console.log("Type of", typeof transactions);
       setRow([]);
       for (let i = 0; i <= limit; i++) {
         if (transactions[i] === undefined) {
@@ -64,6 +67,14 @@ const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
+            {dashboard ? (
+              <>
+                <TableCell>Date</TableCell>
+                <TableCell>Status</TableCell>
+              </>
+            ) : (
+              <></>
+            )}
 
             <TableCell align="right">Amount</TableCell>
           </TableRow>
@@ -77,7 +88,14 @@ const TransactionTable: React.FC<TableProps> = ({ transactions, limit }) => {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-
+              {dashboard ? (
+                <>
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell>{row.status}</TableCell>
+                </>
+              ) : (
+                <></>
+              )}
               <TableCell align="right">{row.amount}</TableCell>
             </TableRow>
           ))}
