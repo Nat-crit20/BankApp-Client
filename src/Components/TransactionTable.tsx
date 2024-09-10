@@ -5,7 +5,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Avatar } from "@mui/material";
 import React, { useEffect, useState } from "react";
+
 import { Transaction } from "../lib/types";
 
 function createData(
@@ -89,7 +91,15 @@ const TransactionTable: React.FC<TableProps> = ({
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {dashboard ? <img src={row.logo_url} /> : <></>}
+                {dashboard ? (
+                  row.logo_url ? (
+                    <Avatar alt={row.name} src={row.logo_url} />
+                  ) : (
+                    <Avatar>{row.name[0]}</Avatar>
+                  )
+                ) : (
+                  <></>
+                )}
                 {row.name}
               </TableCell>
               {dashboard ? (
