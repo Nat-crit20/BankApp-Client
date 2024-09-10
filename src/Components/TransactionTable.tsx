@@ -90,12 +90,32 @@ const TransactionTable: React.FC<TableProps> = ({
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell
+                component="th"
+                scope="row"
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                }}
+              >
                 {dashboard ? (
                   row.logo_url ? (
-                    <Avatar alt={row.name} src={row.logo_url} />
+                    <Avatar
+                      sx={{
+                        m: 1,
+                      }}
+                      alt={row.name}
+                      src={row.logo_url}
+                    />
                   ) : (
-                    <Avatar>{row.name[0]}</Avatar>
+                    <Avatar
+                      sx={{
+                        m: 1,
+                      }}
+                    >
+                      {row.name[0]}
+                    </Avatar>
                   )
                 ) : (
                   <></>
