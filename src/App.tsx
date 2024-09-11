@@ -7,7 +7,6 @@ import DashboardView from "./View/DashboardView";
 import LoginView from "./View/LoginView";
 import SignUpView from "./View/SignUpView";
 import Layout from "./Components/Layout";
-import AccountsView from "./View/AccountsView";
 import TransactionsView from "./View/Transactions";
 import SettingsView from "./View/SettingsView";
 
@@ -53,7 +52,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/home" element={<DashboardView />} />
             <Route path="/transactions" element={<TransactionsView />} />
-            <Route path="/accounts" element={<AccountsView />} />
+            
             <Route path="/settings" element={<SettingsView />} />
           </Route>
         </Routes>

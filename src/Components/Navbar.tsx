@@ -21,9 +21,7 @@ const Navbar = () => {
         <Link to="/transactions">
           <Tab label="Transactions" />
         </Link>
-        <Link to="/accounts">
-          <Tab label="Accounts" />
-        </Link>
+
         <Link to="/settings">
           <Tab label="Settings" />
         </Link>
