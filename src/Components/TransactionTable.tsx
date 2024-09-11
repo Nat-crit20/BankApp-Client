@@ -5,7 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Avatar } from "@mui/material";
+import { Avatar, Chip } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import { Transaction } from "../lib/types";
@@ -125,7 +125,13 @@ const TransactionTable: React.FC<TableProps> = ({
               {dashboard ? (
                 <>
                   <TableCell>{row.date}</TableCell>
-                  <TableCell>{row.status}</TableCell>
+                  <TableCell>
+                    {row.status ? (
+                      <Chip label="Pending" color="primary" />
+                    ) : (
+                      <Chip label="Complete" color="success" />
+                    )}
+                  </TableCell>
                 </>
               ) : (
                 <></>
