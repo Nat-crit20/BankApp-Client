@@ -13,7 +13,7 @@ const Navbar = () => {
       <Tabs
         orientation="vertical"
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: "divider", width: "10rem" }}
+        sx={{ borderRight: 1, borderColor: "divider", width: "12rem" }}
       >
         <Link to="/home">
           <Tab label="Dashboard" />

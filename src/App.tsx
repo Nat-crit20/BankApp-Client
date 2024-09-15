@@ -54,7 +54,6 @@ function App() {
             <Route path="/home" element={<DashboardView />} />
             <Route path="/transactions" element={<TransactionsView />} />
             <Route path="/budget" element={<BudgetView />} />
-
             <Route path="/settings" element={<SettingsView />} />
           </Route>
         </Routes>
