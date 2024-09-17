@@ -1,10 +1,13 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Transaction } from "../lib/types";
+import { useEffect, useState } from "react";
 interface BasicPieProps {
-  transactions: Transaction[]
+  transactions: Transaction[];
 }
 
-const BasicPie: = ({transactions})=> {
+const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {});
   return (
     <PieChart
       series={[
@@ -20,5 +23,5 @@ const BasicPie: = ({transactions})=> {
       height={200}
     />
   );
-}
-export default BasicPie
+};
+export default BasicPie;
