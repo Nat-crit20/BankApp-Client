@@ -6,6 +6,5 @@ export const getTransactions = async () => {
     return [];
   }
   const data = await response.json();
-  console.log(data);
   return data.latest_transactions.reverse();
 };

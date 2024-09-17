@@ -12,7 +12,21 @@ interface Categories {
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
   const [categories, setCategories] = useState<Categories[]>([]);
   const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>();
-  useEffect(() => {});
+  useEffect(() => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth;
+    setTotalMonthlySpending(0);
+    for (let i = 0; i < transactions.length; i++) {
+      const transactionDate = new Date(transactions[i].date);
+      if (currentMonth === transactionDate.getMonth) {
+        setTotalMonthlySpending((prev) => {
+          if (prev) {
+            return (prev += Math.abs(transactions[i].amount));
+          }
+        });
+      }
+    }
+  });
   return (
     <PieChart
       series={[
