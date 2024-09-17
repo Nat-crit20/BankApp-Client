@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 interface BasicPieProps {
   transactions: Transaction[];
 }
+interface Categories {}
 
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
   const [categories, setCategories] = useState([]);
+  const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>();
   useEffect(() => {});
   return (
     <PieChart
