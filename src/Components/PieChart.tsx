@@ -24,9 +24,11 @@ const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
             return (prev += Math.abs(transactions[i].amount));
           }
         });
+      } else {
+        break;
       }
     }
-  });
+  }, [transactions]);
   return (
     <PieChart
       series={[
