@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 interface BasicPieProps {
   transactions: Transaction[];
 }
-interface Categories {}
+interface Categories {
+  label: string;
+  value: number;
+}
 
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Categories[]>([]);
   const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>();
   useEffect(() => {});
   return (
