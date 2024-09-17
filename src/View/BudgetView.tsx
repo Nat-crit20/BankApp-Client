@@ -21,7 +21,7 @@ const BudgetView = () => {
   return (
     <>
       <h1>Budget Tab</h1>
-      <BasicPie />
+      <BasicPie transactions={transactions} />
     </>
   );
 };

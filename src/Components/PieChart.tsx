@@ -1,6 +1,8 @@
 import { PieChart } from "@mui/x-charts/PieChart";
+import { Transaction } from "../lib/types";
 
-export default function BasicPie() {
+
+const BasicPie: = ({transactions})=> {
   return (
     <PieChart
       series={[
@@ -17,3 +19,4 @@ export default function BasicPie() {
     />
   );
 }
+export default BasicPie
