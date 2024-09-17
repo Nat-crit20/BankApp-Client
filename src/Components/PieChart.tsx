@@ -1,6 +1,8 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Transaction } from "../lib/types";
-
+interface BasicPieProps {
+  transactions: Transaction[]
+}
 
 const BasicPie: = ({transactions})=> {
   return (
