@@ -13,6 +13,7 @@ const TransactionsView = () => {
     if (accountAccess) {
       const loadTransactions = async () => {
         const data: Transaction[] = await getTransactions();
+        console.log("Transaction data", data);
         setTransactions(data);
       };
 
