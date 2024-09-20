@@ -7,14 +7,15 @@ interface BasicPieProps {
 
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
   const [categories, setCategories] = useState({});
-  const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>();
+  const [data, setData] = useState([]);
+  const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>(0);
   useEffect(() => {
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth;
+    const currentMonth = currentDate.getMonth();
     setTotalMonthlySpending(0);
     for (let i = 0; i < transactions.length; i++) {
       const transactionDate = new Date(transactions[i].date);
-      if (currentMonth === transactionDate.getMonth) {
+      if (currentMonth === transactionDate.getMonth()) {
         setTotalMonthlySpending((prev) => {
           if (prev) {
             return (prev += Math.abs(transactions[i].amount));
@@ -26,18 +27,18 @@ const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
     }
     for (let j = 0; j < transactions.length; j++) {
       const transactionDate = new Date(transactions[j].date);
-      if (currentMonth === transactionDate.getMonth) {
-        const transactionCat = transactions[j].category[0];
+      if (currentMonth === transactionDate.getMonth()) {
+        const transactionCat = transactions[j]?.category?.[0];
         const catValue = categories[transactionCat] || 0;
-        const amount = transactions[j].amount;
-
-        setCategories({
-          ...categories,
-          transactionCat: catValue + amount,
-        });
+        const amount = Math.abs(transactions[j].amount);
+        // console.log("Categories", transactionCat);
+        setCategories((prevCategories) => ({
+          ...prevCategories,
+          [transactionCat]: catValue + amount, // Fix: Use computed property for category
+        }));
       }
     }
-  }, [transactions, categories]);
+  }, [transactions]);
   return (
     <PieChart
       series={[
