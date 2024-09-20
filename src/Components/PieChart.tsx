@@ -4,13 +4,9 @@ import { useEffect, useState } from "react";
 interface BasicPieProps {
   transactions: Transaction[];
 }
-interface Categories {
-  label: string;
-  value: number;
-}
 
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
-  const [categories, setCategories] = useState<Categories[]>([]);
+  const [categories, setCategories] = useState({});
   const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>();
   useEffect(() => {
     const currentDate = new Date();
@@ -28,7 +24,20 @@ const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
         break;
       }
     }
-  }, [transactions]);
+    for (let j = 0; j < transactions.length; j++) {
+      const transactionDate = new Date(transactions[j].date);
+      if (currentMonth === transactionDate.getMonth) {
+        const transactionCat = transactions[j].category[0];
+        const catValue = categories[transactionCat] || 0;
+        const amount = transactions[j].amount;
+
+        setCategories({
+          ...categories,
+          transactionCat: catValue + amount,
+        });
+      }
+    }
+  }, [transactions, categories]);
   return (
     <PieChart
       series={[
@@ -37,6 +46,7 @@ const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
             { id: 0, value: 10, label: "series A" },
             { id: 1, value: 15, label: "series B" },
             { id: 2, value: 20, label: "series C" },
+            { id: 3, value: 20, label: "series C" },
           ],
         },
       ]}
