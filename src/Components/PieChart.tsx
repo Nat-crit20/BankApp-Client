@@ -4,51 +4,51 @@ import { useEffect, useState } from "react";
 interface BasicPieProps {
   transactions: Transaction[];
 }
+interface PieData {
+  id: number;
+  value: number;
+  label: string;
+}
 
 const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
-  const [categories, setCategories] = useState({});
-  const [data, setData] = useState([]);
-  const [totalMonthlySpending, setTotalMonthlySpending] = useState<number>(0);
+  const [pieData, setData] = useState<PieData[]>([]);
+
   useEffect(() => {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
-    setTotalMonthlySpending(0);
-    for (let i = 0; i < transactions.length; i++) {
-      const transactionDate = new Date(transactions[i].date);
+
+    let monthlySpending = 0;
+    const categoryTotals: { [key: string]: number } = {};
+
+    // Loop through transactions to calculate totals
+    transactions.forEach((transaction) => {
+      const transactionDate = new Date(transaction.date);
       if (currentMonth === transactionDate.getMonth()) {
-        setTotalMonthlySpending((prev) => {
-          if (prev) {
-            return (prev += Math.abs(transactions[i].amount));
-          }
-        });
-      } else {
-        break;
+        const amount = Math.abs(transaction.amount);
+        monthlySpending += amount;
+
+        const transactionCat = transaction?.category?.[0] || "Uncategorized";
+        categoryTotals[transactionCat] =
+          (categoryTotals[transactionCat] || 0) + amount;
       }
-    }
-    for (let j = 0; j < transactions.length; j++) {
-      const transactionDate = new Date(transactions[j].date);
-      if (currentMonth === transactionDate.getMonth()) {
-        const transactionCat = transactions[j]?.category?.[0];
-        const catValue = categories[transactionCat] || 0;
-        const amount = Math.abs(transactions[j].amount);
-        // console.log("Categories", transactionCat);
-        setCategories((prevCategories) => ({
-          ...prevCategories,
-          [transactionCat]: catValue + amount, // Fix: Use computed property for category
-        }));
-      }
-    }
+    });
+
+    // Prepare pie chart data
+    const updatedPieData = Object.entries(categoryTotals).map(
+      ([key, value], index) => ({
+        id: index + 1,
+        value: (value / monthlySpending) * 100,
+        label: key,
+      })
+    );
+    setData(updatedPieData);
   }, [transactions]);
+
   return (
     <PieChart
       series={[
         {
-          data: [
-            { id: 0, value: 10, label: "series A" },
-            { id: 1, value: 15, label: "series B" },
-            { id: 2, value: 20, label: "series C" },
-            { id: 3, value: 20, label: "series C" },
-          ],
+          data: pieData, // Use dynamically generated data
         },
       ]}
       width={400}
@@ -56,4 +56,5 @@ const BasicPie: React.FC<BasicPieProps> = ({ transactions }) => {
     />
   );
 };
+
 export default BasicPie;
