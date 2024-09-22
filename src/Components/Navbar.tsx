@@ -1,4 +1,4 @@
-import { Box, Tabs, Tab } from "@mui/material";
+import { Box, Tabs, Tab, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
@@ -27,6 +27,9 @@ const Navbar = () => {
         <Link to="/settings">
           <Tab label="Settings" />
         </Link>
+        <Button variant="contained" color="error">
+          Log Out
+        </Button>
       </Tabs>
     </Box>
   );
