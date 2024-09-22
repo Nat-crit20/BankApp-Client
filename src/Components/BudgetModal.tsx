@@ -1,8 +1,13 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { TextField } from "@mui/material";
+import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -17,7 +22,8 @@ const style = {
 };
 
 const BudgetModal = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState<boolean>(false);
+  const [category, setCategory] = useState<string>("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -31,12 +37,20 @@ const BudgetModal = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
       </Modal>
     </div>
