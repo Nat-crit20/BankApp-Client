@@ -6,9 +6,8 @@ const Navbar = () => {
       sx={{
         flexGrow: 1,
         bgcolor: "background.paper",
-        display: "flex",
         height: "100vh",
-        padding: "1rem",
+        display: "flex",
       }}
     >
       <Tabs
@@ -18,9 +17,16 @@ const Navbar = () => {
           borderRight: 1,
           borderColor: "divider",
           width: "12rem",
+          height: "100vh",
         }}
       >
-        <Tabs orientation="vertical" aria-label="Vertical tabs example">
+        <Tabs
+          orientation="vertical"
+          aria-label="Vertical tabs example"
+          sx={{
+            height: "80vh",
+          }}
+        >
           <Link to="/home">
             <Tab label="Dashboard" />
           </Link>
@@ -35,7 +41,13 @@ const Navbar = () => {
           </Link>
         </Tabs>
 
-        <Button variant="contained" color="error">
+        <Button
+          variant="contained"
+          color="error"
+          sx={{
+            margin: "1rem",
+          }}
+        >
           Log Out
         </Button>
       </Tabs>
