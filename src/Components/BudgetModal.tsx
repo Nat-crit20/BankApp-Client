@@ -27,6 +27,10 @@ const BudgetModal = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleSelectChange = (event: SelectChangeEvent) => {
+    setCategory(event.target.value);
+  };
+
   return (
     <div>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -38,18 +42,23 @@ const BudgetModal = () => {
       >
         <Box sx={style}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="category-label">Category</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={age}
-              label="Age"
-              onChange={handleChange}
+              labelId="category-label"
+              id="category-select"
+              value={category}
+              onChange={handleSelectChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="Entertainment">Entertainment</MenuItem>
+              <MenuItem value="Food And Drink">Food and Drink</MenuItem>
+              <MenuItem value="Travel">Travel</MenuItem>
             </Select>
+
+            <TextField
+              id="category-amount-label"
+              label="Amount to Save"
+              variant="standard"
+            />
           </FormControl>
         </Box>
       </Modal>
