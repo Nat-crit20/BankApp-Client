@@ -1,10 +1,14 @@
 import {
   Box,
   Card,
+  CardActions,
   CardContent,
+  Fab,
   LinearProgress,
+  TextField,
   Typography,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 const BudgetCard = () => {
   return (
@@ -20,6 +24,12 @@ const BudgetCard = () => {
             >{`45%`}</Typography>
           </Box>
         </CardContent>
+        <CardActions>
+          <TextField variant="outlined" />
+          <Fab color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </CardActions>
       </Card>
     </Box>
   );
