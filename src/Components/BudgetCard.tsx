@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const BudgetCard = () => {
   return (
@@ -26,6 +27,9 @@ const BudgetCard = () => {
         </CardContent>
         <CardActions>
           <TextField variant="outlined" />
+          <Fab color="warning" aria-label="subtract">
+            <RemoveIcon />
+          </Fab>
           <Fab color="primary" aria-label="add">
             <AddIcon />
           </Fab>
