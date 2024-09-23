@@ -1,8 +1,12 @@
+import { Box, Card, CardContent } from "@mui/material";
+
 const BudgetCard = () => {
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <Box>
+      <Card variant="outlined">
+        <CardContent></CardContent>
+      </Card>
+    </Box>
   );
 };
 export default BudgetCard;
