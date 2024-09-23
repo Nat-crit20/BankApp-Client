@@ -23,6 +23,8 @@ const style = {
 
 const BudgetModal = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [customCategory, setCustomCategory] = useState<string>("");
+  const [budget, setBudget] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,12 +54,21 @@ const BudgetModal = () => {
               <MenuItem value="Entertainment">Entertainment</MenuItem>
               <MenuItem value="Food And Drink">Food and Drink</MenuItem>
               <MenuItem value="Travel">Travel</MenuItem>
+              <MenuItem>
+                <TextField
+                  id="category-amount-label"
+                  label="Amount to Save"
+                  variant="standard"
+                  value={customCategory}
+                />
+              </MenuItem>
             </Select>
 
             <TextField
               id="category-amount-label"
               label="Amount to Save"
               variant="standard"
+              value={budget}
             />
           </FormControl>
         </Box>
