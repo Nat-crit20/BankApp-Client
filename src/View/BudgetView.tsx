@@ -6,6 +6,10 @@ import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
 import BudgetModal from "../Components/BudgetModal";
 import BudgetCard from "../Components/BudgetCard";
+const style = {
+  display: "flex",
+};
+
 const BudgetView = () => {
   const { accountAccess } = useContext(Context);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -24,10 +28,15 @@ const BudgetView = () => {
   return (
     <>
       <h1>Budget Tab</h1>
-      <BasicPie transactions={transactions} />
-      <BudgetModal />
-      <Box>
-        <BudgetCard />
+
+      <Box sx={style}>
+        <BasicPie transactions={transactions} />
+        <Box>
+          <BudgetModal />
+          <BudgetCard />
+          <BudgetCard />
+          <BudgetCard />
+        </Box>
       </Box>
     </>
   );
