@@ -17,7 +17,7 @@ const BudgetCard = () => {
       <Card variant="outlined">
         <CardContent>
           <Typography>Entertainment</Typography>
-          <LinearProgress color="success" value={45} />
+          <LinearProgress variant="determinate" color="success" value={45} />
           <Box sx={{ minWidth: 35 }}>
             <Typography
               variant="body2"
