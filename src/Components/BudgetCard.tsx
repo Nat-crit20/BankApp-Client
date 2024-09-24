@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 const BudgetCard = () => {
   return (
@@ -33,6 +35,8 @@ const BudgetCard = () => {
           <Fab color="success" aria-label="add">
             <AddIcon />
           </Fab>
+          <DeleteIcon />
+          <EditIcon />
         </CardActions>
       </Card>
     </Box>
