@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import { ChangeEvent } from "react";
 import Modal from "@mui/material/Modal";
 
 import FormControl from "@mui/material/FormControl";
@@ -8,7 +8,7 @@ import { TextField } from "@mui/material";
 import { useState } from "react";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -30,12 +30,11 @@ const BudgetModal = () => {
   };
   const handleClose = () => setOpen(false);
 
-  const handleCategoryChange = (event) => {
+  const handleCategoryChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCategory(event.target.value);
   };
-  const handleBudgetChange = (event) => {
+  const handleBudgetChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    console.log(value, Number(value), typeof value, typeof Number(value));
     if (isNaN(Number(event.target.value))) {
       return;
     }
