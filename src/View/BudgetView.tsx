@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react";
+import { Box } from "@mui/material";
 import BasicPie from "../Components/PieChart";
 import Context from "../Context";
 import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
 import BudgetModal from "../Components/BudgetModal";
+import BudgetCard from "../Components/BudgetCard";
 const BudgetView = () => {
   const { accountAccess } = useContext(Context);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -24,6 +26,9 @@ const BudgetView = () => {
       <h1>Budget Tab</h1>
       <BasicPie transactions={transactions} />
       <BudgetModal />
+      <Box>
+        <BudgetCard />
+      </Box>
     </>
   );
 };
