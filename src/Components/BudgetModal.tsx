@@ -29,6 +29,9 @@ const BudgetModal = () => {
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
+  const handleBudgetChange = (event) => {
+    setBudget(event.target.value);
+  };
 
   return (
     <div>
@@ -53,6 +56,7 @@ const BudgetModal = () => {
               label="Amount to Save"
               variant="standard"
               value={budget}
+              onChange={handleBudgetChange}
             />
           </FormControl>
         </Box>
