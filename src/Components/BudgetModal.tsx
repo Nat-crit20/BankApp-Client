@@ -23,14 +23,23 @@ const BudgetModal = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [budget, setBudget] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setBudget("");
+    setCategory("");
+    setOpen(true);
+  };
   const handleClose = () => setOpen(false);
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);
   };
   const handleBudgetChange = (event) => {
-    setBudget(event.target.value);
+    const value = event.target.value;
+    console.log(value, Number(value), typeof value, typeof Number(value));
+    if (isNaN(Number(event.target.value))) {
+      return;
+    }
+    setBudget(value);
   };
 
   return (
