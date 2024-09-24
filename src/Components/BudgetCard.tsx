@@ -27,10 +27,10 @@ const BudgetCard = () => {
         </CardContent>
         <CardActions>
           <TextField variant="outlined" />
-          <Fab color="warning" aria-label="subtract">
+          <Fab color="error" aria-label="subtract">
             <RemoveIcon />
           </Fab>
-          <Fab color="primary" aria-label="add">
+          <Fab color="success" aria-label="add">
             <AddIcon />
           </Fab>
         </CardActions>
