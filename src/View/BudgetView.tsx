@@ -17,6 +17,11 @@ const BudgetView = () => {
   const { accountAccess } = useContext(Context);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [goals, setGoals] = useState<Goal[]>([]);
+  const handleCreateGoal = (goal: Goal) => {
+    setGoals((prev) => {
+      return [...prev, goal];
+    });
+  };
 
   useEffect(() => {
     if (accountAccess) {
