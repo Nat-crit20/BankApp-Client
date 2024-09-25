@@ -12,6 +12,7 @@ const style = {
 
 type Goal = {
   category: string;
+  amount: string
 };
 const BudgetView = () => {
   const { accountAccess } = useContext(Context);
@@ -41,7 +42,7 @@ const BudgetView = () => {
       <Box sx={style}>
         <BasicPie transactions={transactions} />
         <Box>
-          <BudgetModal />
+          <BudgetModal handleCreateGoal={handleCreateGoal} />
           <BudgetCard />
           <BudgetCard />
           <BudgetCard />

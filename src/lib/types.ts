@@ -17,3 +17,8 @@ export interface Transaction {
   transaction_id: string;
   website: string;
 }
+
+export interface Goal {
+  category: string;
+  amount: string;
+}

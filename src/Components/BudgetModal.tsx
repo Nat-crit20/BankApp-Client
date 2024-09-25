@@ -18,6 +18,9 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+type BudgetModalProps = {
+  handleCreateGoal: (a: string) => void;
+};
 
 const BudgetModal = () => {
   const [open, setOpen] = useState<boolean>(false);
