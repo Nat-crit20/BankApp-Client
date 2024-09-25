@@ -10,9 +10,13 @@ const style = {
   display: "flex",
 };
 
+type Goal = {
+  category: string;
+};
 const BudgetView = () => {
   const { accountAccess } = useContext(Context);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [goals, setGoals] = useState<Goal[]>([]);
 
   useEffect(() => {
     if (accountAccess) {
