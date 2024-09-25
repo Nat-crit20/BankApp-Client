@@ -23,7 +23,7 @@ interface BudgetModalProps {
   handleCreateGoal: (a: Goal) => void;
 }
 
-const BudgetModal: React.FC<BudgetModalProps> = () => {
+const BudgetModal: React.FC<BudgetModalProps> = ({ handleCreateGoal }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [budget, setBudget] = useState<string>("");
   const [category, setCategory] = useState<string>("");
@@ -44,6 +44,15 @@ const BudgetModal: React.FC<BudgetModalProps> = () => {
     }
     setBudget(value);
   };
+  const handleSubmit = () => {
+    const goal: Goal = {
+      category: category,
+      amount: budget,
+    };
+    handleCreateGoal(goal);
+    handleClose();
+    return;
+  };
 
   return (
     <div>
@@ -55,7 +64,7 @@ const BudgetModal: React.FC<BudgetModalProps> = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <FormControl fullWidth>
+          <FormControl fullWidth onSubmit={handleSubmit}>
             <TextField
               id="category-amount-label"
               label="Category"
@@ -70,6 +79,7 @@ const BudgetModal: React.FC<BudgetModalProps> = () => {
               value={budget}
               onChange={handleBudgetChange}
             />
+            <Button type="submit">Submit</Button>
           </FormControl>
         </Box>
       </Modal>
