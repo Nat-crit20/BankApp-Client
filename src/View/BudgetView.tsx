@@ -40,7 +40,11 @@ const BudgetView = () => {
         <BasicPie transactions={transactions} />
         <Box>
           <BudgetModal handleCreateGoal={handleCreateGoal} />
-          <BudgetCard />
+          {goals.map((goal) => {
+            console.log(goal);
+            return <BudgetCard />;
+          })}
+
           <BudgetCard />
           <BudgetCard />
         </Box>
