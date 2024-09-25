@@ -6,14 +6,11 @@ import { getTransactions } from "../lib/utilities";
 import { Transaction } from "../lib/types";
 import BudgetModal from "../Components/BudgetModal";
 import BudgetCard from "../Components/BudgetCard";
+import { Goal } from "../lib/types";
 const style = {
   display: "flex",
 };
 
-type Goal = {
-  category: string;
-  amount: string
-};
 const BudgetView = () => {
   const { accountAccess } = useContext(Context);
   const [transactions, setTransactions] = useState<Transaction[]>([]);

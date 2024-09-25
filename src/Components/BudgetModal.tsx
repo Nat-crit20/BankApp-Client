@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { ChangeEvent } from "react";
 import Modal from "@mui/material/Modal";
+import { Goal } from "../lib/types";
 
 import FormControl from "@mui/material/FormControl";
 import { TextField } from "@mui/material";
@@ -18,11 +19,11 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-type BudgetModalProps = {
-  handleCreateGoal: (a: string) => void;
-};
+interface BudgetModalProps {
+  handleCreateGoal: (a: Goal) => void;
+}
 
-const BudgetModal = () => {
+const BudgetModal: React.FC<BudgetModalProps> = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [budget, setBudget] = useState<string>("");
   const [category, setCategory] = useState<string>("");
