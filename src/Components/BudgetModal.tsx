@@ -64,23 +64,25 @@ const BudgetModal: React.FC<BudgetModalProps> = ({ handleCreateGoal }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <FormControl fullWidth onSubmit={handleSubmit}>
-            <TextField
-              id="category-amount-label"
-              label="Category"
-              variant="standard"
-              value={category}
-              onChange={handleCategoryChange}
-            />
-            <TextField
-              id="category-amount-label"
-              label="Amount to Save"
-              variant="standard"
-              value={budget}
-              onChange={handleBudgetChange}
-            />
-            <Button type="submit">Submit</Button>
-          </FormControl>
+          <form onSubmit={handleSubmit}>
+            <FormControl fullWidth>
+              <TextField
+                id="category-amount-label"
+                label="Category"
+                variant="standard"
+                value={category}
+                onChange={handleCategoryChange}
+              />
+              <TextField
+                id="category-amount-label"
+                label="Amount to Save"
+                variant="standard"
+                value={budget}
+                onChange={handleBudgetChange}
+              />
+              <Button type="submit">Submit</Button>
+            </FormControl>
+          </form>
         </Box>
       </Modal>
     </div>
