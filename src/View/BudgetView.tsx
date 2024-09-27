@@ -21,6 +21,13 @@ const BudgetView = () => {
     });
   };
 
+  const handleIncreaseAmount = () => {};
+  const handleDecreaseAmount = () => {};
+
+  const handleEditGoal = () => {};
+
+  const handleDeleteGoal = () => {};
+
   useEffect(() => {
     if (accountAccess) {
       const loadTransactions = async () => {
@@ -44,9 +51,6 @@ const BudgetView = () => {
             console.log(goal);
             return <BudgetCard />;
           })}
-
-          <BudgetCard />
-          <BudgetCard />
         </Box>
       </Box>
     </>
