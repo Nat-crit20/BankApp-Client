@@ -13,7 +13,14 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const BudgetCard = () => {
+interface BudgetCardProps {
+  handleEditGoal: () => void;
+  handleIncreaseAmount: () => void;
+  handleDecreaseAmount: () => void;
+  handleDeleteGoal: () => void;
+}
+
+const BudgetCard: React.FC<BudgetCardProps> = () => {
   return (
     <Card variant="outlined">
       <CardContent>

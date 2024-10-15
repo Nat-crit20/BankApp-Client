@@ -99,7 +99,14 @@ const BudgetView = () => {
           <BudgetModal handleCreateGoal={handleCreateGoal} />
           {goals.map((goal) => {
             console.log(goal);
-            return <BudgetCard />;
+            return (
+              <BudgetCard
+                handleEditGoal={handleEditGoal}
+                handleIncreaseAmount={handleIncreaseAmount}
+                handleDecreaseAmount={handleDecreaseAmount}
+                handleDeleteGoal={handleDeleteGoal}
+              />
+            );
           })}
         </Box>
       </Box>
