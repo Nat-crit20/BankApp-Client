@@ -21,7 +21,21 @@ const BudgetView = () => {
     });
   };
 
-  const handleIncreaseAmount = () => {};
+  const handleIncreaseAmount = (goalID, amount) => {
+    setGoals((prev: Goal[]): Goal[] => {
+      return prev.map((goal) => {
+        if (goal.id === goalID) {
+          return {
+            category: goal.category,
+            amount: amount,
+            id: goalID,
+          };
+        } else {
+          return goal;
+        }
+      });
+    });
+  };
   const handleDecreaseAmount = () => {};
 
   const handleEditGoal = () => {};
