@@ -30,7 +30,13 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
   handleEditGoal,
   handleIncreaseAmount,
 }) => {
+  const calcCompletion = (): number => {
+    return Math.floor((amount / Number(goal.budget)) * 100);
+  };
   const [amount, setAmount] = useState<number>(0);
+  const [completion, setCompletion] = useState<number>(
+    Math.floor((amount / Number(goal.budget)) * 100)
+  );
 
   const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
@@ -38,17 +44,22 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
       return;
     }
     setAmount(value);
+    setCompletion(() => calcCompletion());
   };
   return (
     <Card variant="outlined">
       <CardContent>
-        <Typography>Entertainment</Typography>
-        <LinearProgress variant="determinate" color="success" value={45} />
+        <Typography>{goal.category}</Typography>
+        <LinearProgress
+          variant="determinate"
+          color="success"
+          value={completion}
+        />
         <Box sx={{ minWidth: 35 }}>
           <Typography
             variant="body2"
             sx={{ color: "text.secondary" }}
-          >{`45%`}</Typography>
+          >{`${completion}%`}</Typography>
         </Box>
       </CardContent>
       <CardActions>
