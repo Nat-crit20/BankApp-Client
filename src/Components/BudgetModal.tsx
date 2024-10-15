@@ -48,7 +48,8 @@ const BudgetModal: React.FC<BudgetModalProps> = ({ handleCreateGoal }) => {
   const handleSubmit = () => {
     const goal: Goal = {
       category: category,
-      amount: budget,
+      budget: budget,
+      amount: "0",
       id: uuidv4(),
     };
     handleCreateGoal(goal);
