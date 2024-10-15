@@ -25,10 +25,11 @@ const BudgetView = () => {
     setGoals((prev: Goal[]): Goal[] => {
       return prev.map((goal) => {
         if (goal.id === goalID) {
-          const newBudget = String(Number(goal.amount) + amount);
+          const newAmount = String(Number(goal.amount) + amount);
           return {
+            budget: goal.budget,
             category: goal.category,
-            amount: newBudget,
+            amount: newAmount,
             id: goalID,
           };
         } else {
@@ -41,10 +42,11 @@ const BudgetView = () => {
     setGoals((prev: Goal[]): Goal[] => {
       return prev.map((goal) => {
         if (goal.id === goalID) {
-          const newBudget = String(Number(goal.amount) - amount);
+          const newAmount = String(Number(goal.amount) - amount);
           return {
+            budget: goal.budget,
             category: goal.category,
-            amount: newBudget,
+            amount: newAmount,
             id: goalID,
           };
         } else {
