@@ -12,12 +12,13 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { Goal } from "../lib/types";
 
 interface BudgetCardProps {
-  handleEditGoal: () => void;
-  handleIncreaseAmount: () => void;
-  handleDecreaseAmount: () => void;
-  handleDeleteGoal: () => void;
+  handleEditGoal: (editedGoal: Goal) => void;
+  handleIncreaseAmount: (goalID: string, amount: number) => void';
+  handleDecreaseAmount: (goalID: string, amount: number) => void;
+  handleDeleteGoal: (goalID: string) => void';
 }
 
 const BudgetCard: React.FC<BudgetCardProps> = () => {
