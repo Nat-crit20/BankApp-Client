@@ -21,13 +21,14 @@ const BudgetView = () => {
     });
   };
 
-  const handleIncreaseAmount = (goalID, amount) => {
+  const handleIncreaseAmount = (goalID: string, amount: number) => {
     setGoals((prev: Goal[]): Goal[] => {
       return prev.map((goal) => {
         if (goal.id === goalID) {
+          const newBudget = String(Number(goal.amount) + amount);
           return {
             category: goal.category,
-            amount: amount,
+            amount: newBudget,
             id: goalID,
           };
         } else {
@@ -36,7 +37,22 @@ const BudgetView = () => {
       });
     });
   };
-  const handleDecreaseAmount = () => {};
+  const handleDecreaseAmount = (goalID: string, amount: number) => {
+    setGoals((prev: Goal[]): Goal[] => {
+      return prev.map((goal) => {
+        if (goal.id === goalID) {
+          const newBudget = String(Number(goal.amount) - amount);
+          return {
+            category: goal.category,
+            amount: newBudget,
+            id: goalID,
+          };
+        } else {
+          return goal;
+        }
+      });
+    });
+  };
 
   const handleEditGoal = () => {};
 
