@@ -54,7 +54,17 @@ const BudgetView = () => {
     });
   };
 
-  const handleEditGoal = () => {};
+  const handleEditGoal = (editedGoal: Goal) => {
+    setGoals((prev: Goal[]): Goal[] => {
+      return prev.map((goal) => {
+        if (goal.id === editedGoal.id) {
+          return editedGoal;
+        } else {
+          return goal;
+        }
+      });
+    });
+  };
 
   const handleDeleteGoal = (goalID: string) => {
     setGoals((prev: Goal[]): Goal[] => {
