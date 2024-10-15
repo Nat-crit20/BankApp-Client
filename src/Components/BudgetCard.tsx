@@ -13,8 +13,10 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Goal } from "../lib/types";
+import { ChangeEvent, useState } from "react";
 
 interface BudgetCardProps {
+  goal: Goal;
   handleEditGoal: (editedGoal: Goal) => void;
   handleIncreaseAmount: (goalID: string, amount: number) => void;
   handleDecreaseAmount: (goalID: string, amount: number) => void;
@@ -22,11 +24,21 @@ interface BudgetCardProps {
 }
 
 const BudgetCard: React.FC<BudgetCardProps> = ({
+  goal,
   handleDecreaseAmount,
   handleDeleteGoal,
   handleEditGoal,
   handleIncreaseAmount,
 }) => {
+  const [amount, setAmount] = useState<number>(0);
+
+  const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = Number(event.target.value);
+    if (isNaN(value)) {
+      return;
+    }
+    setAmount(value);
+  };
   return (
     <Card variant="outlined">
       <CardContent>
@@ -40,14 +52,34 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
         </Box>
       </CardContent>
       <CardActions>
-        <TextField variant="outlined" />
-        <Fab color="error" aria-label="subtract">
+        <TextField
+          variant="outlined"
+          value={amount}
+          onChange={handleAmountChange}
+        />
+        <Fab
+          color="error"
+          aria-label="subtract"
+          onClick={() => {
+            handleDecreaseAmount(goal.id, amount);
+          }}
+        >
           <RemoveIcon />
         </Fab>
-        <Fab color="success" aria-label="add">
+        <Fab
+          color="success"
+          aria-label="add"
+          onClick={() => {
+            handleIncreaseAmount(goal.id, amount);
+          }}
+        >
           <AddIcon />
         </Fab>
-        <DeleteIcon />
+        <DeleteIcon
+          onClick={() => {
+            handleDeleteGoal(goal.id);
+          }}
+        />
         <EditIcon />
       </CardActions>
     </Card>

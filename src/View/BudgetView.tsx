@@ -101,6 +101,7 @@ const BudgetView = () => {
             console.log(goal);
             return (
               <BudgetCard
+                goal={goal}
                 handleEditGoal={handleEditGoal}
                 handleIncreaseAmount={handleIncreaseAmount}
                 handleDecreaseAmount={handleDecreaseAmount}
