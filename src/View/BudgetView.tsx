@@ -56,7 +56,17 @@ const BudgetView = () => {
 
   const handleEditGoal = () => {};
 
-  const handleDeleteGoal = () => {};
+  const handleDeleteGoal = (goalID: string) => {
+    setGoals((prev: Goal[]): Goal[] => {
+      return prev.filter((goal) => {
+        if (goal.id !== goalID) {
+          return goal;
+        } else {
+          return goal;
+        }
+      });
+    });
+  };
 
   useEffect(() => {
     if (accountAccess) {
