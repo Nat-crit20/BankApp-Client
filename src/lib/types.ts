@@ -21,4 +21,5 @@ export interface Transaction {
 export interface Goal {
   category: string;
   amount: string;
+  id: string;
 }
