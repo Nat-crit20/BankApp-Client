@@ -7,6 +7,7 @@ import { Goal } from "../lib/types";
 import FormControl from "@mui/material/FormControl";
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const style = {
   position: "absolute",
@@ -48,6 +49,7 @@ const BudgetModal: React.FC<BudgetModalProps> = ({ handleCreateGoal }) => {
     const goal: Goal = {
       category: category,
       amount: budget,
+      id: uuidv4(),
     };
     handleCreateGoal(goal);
     handleClose();
