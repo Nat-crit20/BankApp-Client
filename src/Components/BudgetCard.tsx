@@ -16,12 +16,17 @@ import { Goal } from "../lib/types";
 
 interface BudgetCardProps {
   handleEditGoal: (editedGoal: Goal) => void;
-  handleIncreaseAmount: (goalID: string, amount: number) => void';
+  handleIncreaseAmount: (goalID: string, amount: number) => void;
   handleDecreaseAmount: (goalID: string, amount: number) => void;
-  handleDeleteGoal: (goalID: string) => void';
+  handleDeleteGoal: (goalID: string) => void;
 }
 
-const BudgetCard: React.FC<BudgetCardProps> = () => {
+const BudgetCard: React.FC<BudgetCardProps> = ({
+  handleDecreaseAmount,
+  handleDeleteGoal,
+  handleEditGoal,
+  handleIncreaseAmount,
+}) => {
   return (
     <Card variant="outlined">
       <CardContent>
