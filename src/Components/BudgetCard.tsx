@@ -14,6 +14,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Goal } from "../lib/types";
 import { ChangeEvent, useState } from "react";
+import BudgetEditModal from "./BudgetEditModal";
 
 interface BudgetCardProps {
   goal: Goal;
@@ -101,7 +102,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
             handleDeleteGoal(goal.id);
           }}
         />
-        <EditIcon />
+        <BudgetEditModal handleEditGoal={handleEditGoal} />
       </CardActions>
     </Card>
   );
