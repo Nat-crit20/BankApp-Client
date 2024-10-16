@@ -30,12 +30,13 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
   handleEditGoal,
   handleIncreaseAmount,
 }) => {
-  const calcCompletion = (): number => {
-    return Math.floor((amount / Number(goal.budget)) * 100);
+  const calcCompletion = (savedAmount: number): number => {
+    return Math.floor((savedAmount / Number(goal.budget)) * 100);
   };
+
   const [amount, setAmount] = useState<number>(0);
   const [completion, setCompletion] = useState<number>(
-    Math.floor((amount / Number(goal.budget)) * 100)
+    Math.floor((Number(goal.amount) / Number(goal.budget)) * 100)
   );
 
   const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +45,6 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
       return;
     }
     setAmount(value);
-    setCompletion(() => calcCompletion());
   };
   return (
     <Card variant="outlined">
@@ -73,6 +73,9 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
           aria-label="subtract"
           onClick={() => {
             handleDecreaseAmount(goal.id, amount);
+            const savedAmount = Number(goal.amount) - amount;
+            setCompletion(() => calcCompletion(savedAmount));
+            setAmount(0);
           }}
         >
           <RemoveIcon />
@@ -82,6 +85,10 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
           aria-label="add"
           onClick={() => {
             handleIncreaseAmount(goal.id, amount);
+
+            const savedAmount = Number(goal.amount) + amount;
+            setCompletion(() => calcCompletion(savedAmount));
+            setAmount(0);
           }}
         >
           <AddIcon />
