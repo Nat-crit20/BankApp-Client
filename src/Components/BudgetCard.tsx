@@ -11,7 +11,6 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
 import { Goal } from "../lib/types";
 import { ChangeEvent, useState } from "react";
 import BudgetEditModal from "./BudgetEditModal";
