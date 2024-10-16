@@ -31,8 +31,9 @@ const BudgetEditModal: React.FC<BudgetEditModalProps> = ({
   goal,
 }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [budget, setBudget] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
+  const [budget, setBudget] = useState<string>(goal.budget);
+  const [amount, setAmount] = useState<string>(goal.amount);
+  const [category, setCategory] = useState<string>(goal.category);
   const handleOpen = () => {
     setBudget("");
     setCategory("");
@@ -50,14 +51,21 @@ const BudgetEditModal: React.FC<BudgetEditModalProps> = ({
     }
     setBudget(value);
   };
+  const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+    if (isNaN(Number(event.target.value))) {
+      return;
+    }
+    setAmount(value);
+  };
   const handleSubmit = () => {
-    const goal: Goal = {
+    const updatedGoal: Goal = {
       category: category,
       budget: budget,
-      amount: "0",
-      id: uuidv4(),
+      amount: goal.amount,
+      id: goal.id,
     };
-    handleCreateGoal(goal);
+    handleEditGoal(updatedGoal);
     handleClose();
     return;
   };
@@ -77,18 +85,25 @@ const BudgetEditModal: React.FC<BudgetEditModalProps> = ({
           <form onSubmit={handleSubmit}>
             <FormControl fullWidth>
               <TextField
-                id="category-amount-label"
+                id="category-label"
                 label="Category"
                 variant="standard"
                 value={category}
                 onChange={handleCategoryChange}
               />
               <TextField
-                id="category-amount-label"
+                id="category-budget-label"
                 label="Amount to Save"
                 variant="standard"
                 value={budget}
                 onChange={handleBudgetChange}
+              />
+              <TextField
+                id="category-amount-label"
+                label="Amount saved"
+                variant="standard"
+                value={amount}
+                onChange={handleAmountChange}
               />
               <Button type="submit">Submit</Button>
             </FormControl>
