@@ -74,7 +74,7 @@ const BudgetView = () => {
         if (goal.id !== goalID) {
           return goal;
         } else {
-          return goal;
+          return;
         }
       });
     });

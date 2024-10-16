@@ -94,6 +94,9 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
           <AddIcon />
         </Fab>
         <DeleteIcon
+          style={{
+            cursor: "pointer",
+          }}
           onClick={() => {
             handleDeleteGoal(goal.id);
           }}
