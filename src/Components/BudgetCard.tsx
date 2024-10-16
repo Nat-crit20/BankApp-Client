@@ -102,7 +102,7 @@ const BudgetCard: React.FC<BudgetCardProps> = ({
             handleDeleteGoal(goal.id);
           }}
         />
-        <BudgetEditModal handleEditGoal={handleEditGoal} />
+        <BudgetEditModal handleEditGoal={handleEditGoal} goal={goal} />
       </CardActions>
     </Card>
   );

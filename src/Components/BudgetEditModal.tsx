@@ -21,11 +21,15 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-interface BudgetModalProps {
-  handleCreateGoal: (a: Goal) => void;
+interface BudgetEditModalProps {
+  handleEditGoal: (a: Goal) => void;
+  goal: Goal;
 }
 
-const BudgetEditModal: React.FC<BudgetModalProps> = ({ handleCreateGoal }) => {
+const BudgetEditModal: React.FC<BudgetEditModalProps> = ({
+  handleEditGoal,
+  goal,
+}) => {
   const [open, setOpen] = useState<boolean>(false);
   const [budget, setBudget] = useState<string>("");
   const [category, setCategory] = useState<string>("");
